@@ -44,7 +44,7 @@ addTask = (msg, api_key, params) ->
     response = JSON.parse body
 
     if response.data
-      msg.send "Added to #{response.data.projects[0].name}: https://app.asana.com/0/#{response.data.projects[0].id}/#{response.data.id}"
+      msg.send "ALL YOUR BASE ARE BELONG TO US Added to #{response.data.projects[0].name}: https://app.asana.com/0/#{response.data.projects[0].id}/#{response.data.id}"
     else
       msg.send "Error adding task: " + body + "."
 
@@ -81,7 +81,7 @@ getProject = (msg, api_key, project_name, callback) ->
 module.exports = (robot) ->
   robot.respond /asana: (.*)$/i, (msg) ->
     robot.brain.set("asana_api_key_#{msg.message.user.name}", msg.match[1])
-    msg.send "You should be good to add Asana tasks now!"
+    msg.send "ALL YOUR BASE ARE BELONG TO US You should be good to add Asana tasks now!"
 
   robot.hear /^asana:\s?(@\w+)? ([^#]*)\s?(#[\w-]+)?/i, (msg) ->
     api_key = robot.brain.get("asana_api_key_#{msg.message.user.name}")
@@ -109,4 +109,4 @@ module.exports = (robot) ->
 
           addTask msg, api_key, params
     else
-      msg.send "I need your Asana API key (click your name on the bottom left, then Apps). Send it to me in a 1-1 like this: 'asana: Zfxdag4s...'"
+      msg.send "ALL YOUR BASE ARE BELONG TO US I need your Asana API key (click your name on the bottom left, then Apps). Send it to me in a 1-1 like this: 'asana: Zfxdag4s...'"
